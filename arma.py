@@ -35,7 +35,3 @@ print(acf_vals)
 pacf_vals = pacf(first_diff)
 
 plt.show()
-
-train_data = first_diff[1:30]
-model = ARIMA(train_data, (4, 1))
-print(model)
