@@ -5,8 +5,7 @@ from datetime import datetime
 from datetime import timedelta
 from pandas.plotting import register_matplotlib_converters
 from statsmodels.tsa.stattools import acf, pacf
-from statsmodels.tsa.arima_model import ARMA
-register_matplotlib_converters()
+from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.graphics.tsaplots import plot_acf
 
 
@@ -29,6 +28,14 @@ print(first_diff)
 plt.figure(figsize=(10,4))
 plt.plot(first_diff)
 
+
 acf_vals = acf(first_diff, 100)
 print(acf_vals)
+
+pacf_vals = pacf(first_diff)
+
 plt.show()
+
+train_data = first_diff[1:30]
+model = ARIMA(train_data, (4, 1))
+print(model)
