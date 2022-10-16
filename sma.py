@@ -6,14 +6,14 @@ import matplotlib.pyplot as plt
 # Initialize an empty list to store moving averages
 moving_averages = []
 
-data=pd.read_csv("data-sets/BTC-USD-3M.csv")
+data=pd.read_csv("XOM.csv")
 
 closingPrice = data['Adj Close']
 closingPrice=closingPrice.values
 
 
 # every window of size ... (sma's rank)
-window_size = 10
+window_size = 200
 
 # Loop through the array to consider
 i = 0
@@ -40,7 +40,7 @@ for x in range(0, window_size-1,1):
 
 err = []
 for x in range(0,len(moving_averages)) :
-    err_val = abs(moving_averages[x]-closingPrice[x+window_size-1])
+    err_val = abs(moving_averages[x]-closingPrice[x+window_size-1])/closingPrice[x+window_size-1]*100
     err.append(err_val)
 
 # adding nan list to the start of the array 
