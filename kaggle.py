@@ -20,16 +20,10 @@ import numpy as np
 # random_walk = np.cumsum(points)
 # random_walk_series = pd.Series(random_walk)4
 
-random_walk=pd.read_csv("XOM.csv")
+random_walk=pd.read_csv("data-sets/XOM.csv")
 closingPrice = random_walk['Adj Close']
 closingPrice=closingPrice.values
 print(len(closingPrice))
-
-
-fig3=plt.figure(figsize=(10,8))
-ax3=fig3.add_subplot(111)
-random_walk['Adj Close'].plot(ax=ax3, color='b', lw=3, legend=True)
-plt.figure(figsize=[10, 7.5]); # Set dimensions for figure
 
 
 from statsmodels.tsa.arima_process import ArmaProcess
@@ -45,7 +39,6 @@ MA_3_process = ArmaProcess(ar3, ma3).generate_sample(nsample=1258)
 plt.figure(figsize=[10, 7.5]); # Set dimensions for figure
 plt.plot(MA_3_process)
 plt.title('Simulation of MA(3) Model')
-plt.show()
 plot_acf(MA_3_process, lags=20);
 
 ar3 = np.array([1, 0.9, 0.3, -0.2])
@@ -54,7 +47,6 @@ simulated_ar3_points = ArmaProcess(ar3, ma).generate_sample(nsample=1258)
 plt.figure(figsize=[10, 7.5]); # Set dimensions for figure
 plt.plot(simulated_ar3_points)
 plt.title("Simulation of AR(3) Process")
-plt.show()
 plot_acf(simulated_ar3_points);
 
 from statsmodels.graphics.tsaplots import plot_pacf
@@ -74,7 +66,6 @@ plt.figure(figsize=[15, 7.5]); # Set dimensions for figure
 plt.plot(simulated_ARMA_1_1_points)
 plt.title("Simulated ARMA(1,1) Process")
 plt.xlim([0, 200])
-plt.show()
 
 plot_acf(simulated_ARMA_1_1_points);
 plot_pacf(simulated_ARMA_1_1_points);
@@ -88,7 +79,33 @@ plt.figure(figsize=[15, 7.5]); # Set dimensions for figure
 plt.plot(simulated_ARMA_2_2_points)
 plt.title("Simulated ARMA(2,2) Process")
 plt.xlim([0, 200])
-plt.show()
 
 plot_acf(simulated_ARMA_2_2_points);
 plot_pacf(simulated_ARMA_2_2_points);
+
+np.random.seed(200)
+
+ar_params = np.array([1, -0.4])
+ma_params = np.array([1, -0.8])
+
+returns = ArmaProcess(ar_params, ma_params).generate_sample(nsample=1258)
+
+returns = pd.Series(closingPrice)
+drift = 100
+
+price = pd.Series(np.cumsum(returns)) + drift
+
+returns.plot(figsize=(15,6), color=sns.xkcd_rgb["orange"], title="simulated return series")
+plt.show()
+
+price.plot(figsize=(15,6), color=sns.xkcd_rgb["baby blue"], title="simulated price series")
+
+fig3=plt.figure(figsize=(10,8))
+ax3=fig3.add_subplot(111)
+random_walk['Adj Close'].plot(ax=ax3, color='b', lw=3, legend=True)
+random_walk=random_walk.assign(price=pd.Series(price,index=random_walk.index))
+random_walk['price'].plot(ax=ax3, color='g', lw=3, legend=True)
+plt.figure(figsize=[10, 7.5]); # Set dimensions for figure
+
+
+plt.show()
