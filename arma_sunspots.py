@@ -53,7 +53,7 @@ print(predict_sunspots)
 fig = plt.figure(figsize=(12, 8))
 
 ax3 = fig.add_subplot(111)
-predict_sunspots.plot(ax = ax3, color='b')
+predict_sunspots.plot(ax = ax3, color='r')
 dta.plot(ax = ax3)
 
 
