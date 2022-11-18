@@ -1,14 +1,13 @@
 from matplotlib import pyplot as plt
 import pandas as pd
 import statsmodels.api as sm
+import numpy as np
 
 # path = 'data-sets/air_passengers.csv'
 # data = pd.read_csv(path, index_col='Month')
 
 data = sm.datasets.sunspots.load_pandas().data[['SUNACTIVITY']]
 data.index = pd.date_range(start='1700', end='2009', freq='A')
-data.head(20)
-
 
 from statsmodels.tsa.stattools import adfuller
 result = adfuller(data['SUNACTIVITY'])
@@ -41,17 +40,33 @@ from statsmodels.tsa.arima.model import ARIMA
 model = ARIMA(data, order = (2,1,2))
 model_fit = model.fit()
 
+predicted_data = model_fit.predict(start="1950", end="2008")
+new_data = data['1950':]
+
+error = np.divide((np.subtract(new_data.values, predicted_data.values)), new_data.values)
+error_index = new_data.index
+
+print(data.values)
+print("XXXX")
+print(predicted_data.values)
+
+# print(error)
+
+error_df = pd.DataFrame(error, error_index)
+
+
+
 
 from statsmodels.graphics.tsaplots import plot_predict
 
-fig, ax = plt.subplots()
-ax = data.loc['1900':].plot(ax=ax)
+# fig, ax = plt.subplots()
 
-# I did not use this function yet.
-# predicted_data = model_fit.get_prediction(start="1950", end="2009")
+# ax = data.loc['1900':].plot(ax=ax)
+# predicted_data.plot(ax=ax)
 
-plot_predict(model_fit, start="1950", end="2009", dynamic=False, ax=ax, plot_insample=True)
-plt.show()
+
+# plot_predict(model_fit, start="1950", end="2009", dynamic=False, ax=ax, plot_insample=True)
+# plt.show()
 
 
 
