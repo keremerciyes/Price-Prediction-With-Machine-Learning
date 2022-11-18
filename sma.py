@@ -6,14 +6,14 @@ import matplotlib.pyplot as plt
 # Initialize an empty list to store moving averages
 moving_averages = []
 
-data=pd.read_csv("XOM.csv")
+data=pd.read_csv("data-sets/catfish.csv")
 
 closingPrice = data['Adj Close']
 closingPrice=closingPrice.values
 
 
 # every window of size ... (sma's rank)
-window_size = 200
+window_size = 20
 
 # Loop through the array to consider
 i = 0
