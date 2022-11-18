@@ -57,10 +57,6 @@ error_df = pd.DataFrame(error, error_index)
 print(error)
 plt.plot(error_df)
 
-
-
-from statsmodels.graphics.tsaplots import plot_predict
-
 fig, ax = plt.subplots()
 
 ax = data.loc['1900':].plot(ax=ax)
@@ -69,8 +65,3 @@ predicted_data.plot(ax=ax)
 
 # plot_predict(model_fit, start="1950", end="2009", dynamic=False, ax=ax, plot_insample=True)
 plt.show()
-
-
-
-
-
