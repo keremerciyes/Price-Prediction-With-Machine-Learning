@@ -42,31 +42,33 @@ model_fit = model.fit()
 
 predicted_data = model_fit.predict(start="1950", end="2008")
 new_data = data['1950':]
+new_data = new_data['SUNACTIVITY']
 
-error = np.divide((np.subtract(new_data.values, predicted_data.values)), new_data.values)
+error = abs(np.divide((np.subtract(new_data.values, predicted_data.values)), new_data.values) * 100)
 error_index = new_data.index
 
-print(data.values)
-print("XXXX")
-print(predicted_data.values)
+# print(new_data.values)
+# print("XXXX")
+# print(predicted_data.values)
 
 # print(error)
 
 error_df = pd.DataFrame(error, error_index)
-
+print(error)
+plt.plot(error_df)
 
 
 
 from statsmodels.graphics.tsaplots import plot_predict
 
-# fig, ax = plt.subplots()
+fig, ax = plt.subplots()
 
-# ax = data.loc['1900':].plot(ax=ax)
-# predicted_data.plot(ax=ax)
+ax = data.loc['1900':].plot(ax=ax)
+predicted_data.plot(ax=ax)
 
 
 # plot_predict(model_fit, start="1950", end="2009", dynamic=False, ax=ax, plot_insample=True)
-# plt.show()
+plt.show()
 
 
 
