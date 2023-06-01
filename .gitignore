@@ -1,2 +1,11 @@
-lighthning_logs
+lightning_logs
 tb_logs
+bitcoin_tweet_with_date_text_more_followers.csv
+bitcoin_tweets_only_verified_with_date_and_tweets_sentiments.csv
+bitcoin_tweets_only_verified_with_date_and_tweets.csv
+bitcoin_tweets_only_verified_with_date_tweets_and_roBERTa_sentiments.csv
+bitcoin_tweets_only_verified.csv
+bitcoin_tweets_with_3_columns.csv
+Bitcoin_tweets.csv
+settings.json
+.DS_Store
