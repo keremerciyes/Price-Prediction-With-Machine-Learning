@@ -4,6 +4,7 @@ This repository contains machine learning models for predicting prices using var
 
 ## Folder Structure
 
+-**Stochastic Prediction Models**: This directory contains Jupyter notebooks implementing stochastic prediction models models. 
 - **Linear Regression**: This directory contains Jupyter notebooks implementing linear regression models. 
 - **Support Vector Regression**: This directory contains Jupyter notebooks implementing support vector regression models.
 - **Decision Tree Regression**: This directory contains Jupyter notebooks implementing decision tree regression models.
