@@ -8,6 +8,8 @@ This repository contains machine learning models for predicting prices using var
 - **Support Vector Regression**: This directory contains Jupyter notebooks implementing support vector regression models.
 - **Decision Tree Regression**: This directory contains Jupyter notebooks implementing decision tree regression models.
 - **Random Forest Regression**: This directory contains Jupyter notebooks implementing random forest regression models.
+- **Multi Layer Perceptron**: This directory contains Jupyter notebooks implementing random forest regression models.
+- **Long-Short Term Memory**: This directory contains Jupyter notebooks implementing random forest regression models.
 
 Each directory contains multiple notebooks that apply the respective machine learning model to different datasets or configurations.
 
