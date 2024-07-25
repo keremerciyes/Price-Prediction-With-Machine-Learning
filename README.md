@@ -13,7 +13,7 @@ Each directory contains multiple notebooks that apply the respective machine lea
 
 ## Getting Started
 
-To run the notebooks, you'll need Jupyter and the following Python libraries: `pandas`, `numpy`, `matplotlib`, `seaborn`, and `sklearn`. Install them using pip:
+To run the notebooks, you'll need Jupyter and the following Python libraries: `pandas`, `numpy`, `matplotlib`, `seaborn`, `sklearn` and 'pytorch'. Install them using pip:
 
 ```pip install jupyter pandas numpy matplotlib seaborn sklearn```
 
@@ -35,7 +35,7 @@ Each notebook contains code cells that you can run one by one. They follow this 
 1. **Import libraries**: Import the necessary Python libraries.
 2. **Load the dataset**: Load a CSV or Excel file into a pandas DataFrame.
 3. **Preprocess the data**: Clean the data and prepare it for the machine learning model.
-4. **Train the model**: Use a scikit-learn model (like `LinearRegression` or `SVR`) to train the model on the data.
+4. **Train the model**: Use a scikit-learn model or pytorch model to train the model on the data.
 5. **Evaluate the model**: Evaluate the model's performance using metrics like mean squared error.
 
 Remember to replace the dataset path with the correct path to the dataset on your machine.
