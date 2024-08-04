@@ -1,6 +1,6 @@
 # Price Prediction with Machine Learning
 
-This repository contains machine learning models for predicting prices using various machine learning techniques.
+This repository contains machine learning models for predicting prices using various machine learning techniques. As a team of three students, our aim was to predict the future stock market prices with extra features like social media integration etc. using Python libraries such as Pytorch and Sklearn. We first focused on traditional stochastic ARMA based methods, then we worked on different ML methods. We selected all hyperparameters for our models using Bayesian Search method. Finally, we compared all models we obtained.
 
 ## Folder Structure
 
